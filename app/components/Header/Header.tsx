@@ -75,13 +75,8 @@ function Header(): JSX.Element {
               {isNotLoggedIn ? (
                 <>
                   <Button
-                    variant="outline"
-                    label="Sign in"
+                    label="Sign In"
                     onClick={() => router.push('/login')}
-                  />
-                  <Button
-                    label="Sign Up"
-                    onClick={() => router.push('/signup')}
                   />
                 </>
               ) : (

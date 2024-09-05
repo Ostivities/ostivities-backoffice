@@ -120,6 +120,34 @@ export interface DataType {
   id?: string; // Optional, since it's not used in the data generation
 }
 
+export interface AuditTrailDataType {
+  key: string; // Unique key for each row
+  clientName: string; // Name of the client
+  userRole: string; // Role of the user (e.g., Admin, User, Viewer)
+  actionDescription: string; // Description of the action taken
+  actionDoneBy: string; // The user who executed the action
+  actionDate: string; // Date of the action
+  id: string; // Unique identifier for user actions
+}
+
+
+export interface UsersDataType {
+  key: string;
+  users: string;
+  registrationDate: string;
+  lastLoginDate: string;
+  status: "Active" | "Closed" | "Pending";
+  id: string;
+}
+
+export interface AdminDataType {
+  key: string;
+  staffName: string;
+  designation: "CEO" | "CTO" | "Product Manager" | "HR" | "Admin" | "Finance Manager" | "Customer Care";
+  dateAssigned: string;
+  id: string;
+}
+
 export interface SalesDataType {
   eventType: any;
   dateCreated: any;

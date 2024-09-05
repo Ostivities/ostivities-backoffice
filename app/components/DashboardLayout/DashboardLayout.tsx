@@ -25,7 +25,7 @@ import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React, { isValidElement, useEffect, useRef, useState } from "react";
 import useLocalStorage from "use-local-storage";
-import useFetch from "../forms/create-events/auth";
+import useFetch from "../forms/events-created/auth";
 import { relative } from "path";
 
 
@@ -41,11 +41,12 @@ const items1: MenuProps["items"] = [
 ];
 
 const items2: MenuProps["items"] = [
-  { icon: CompassOutlined, title: "Discovery", link: "/Dashboard" },
-  { icon: PlusCircleOutlined, title: 'Create Event', link: '/Dashboard/create-events' },
-  { icon: FileSearchOutlined, title: 'Events Created', link: '/Dashboard/events-created' },
+  { icon: CompassOutlined, title: "Dashboard", link: "/Dashboard" },
+  { icon: FileSearchOutlined, title: 'Users', link: '/Dashboard/users' },
+  { icon: PlusCircleOutlined, title: 'Audit Trail', link: '/Dashboard/audit-trail' }, 
+  { icon: FieldTimeOutlined, title: "Support", link: "/Dashboard/support" },
   { icon: SettingOutlined, title: "Settings", link: "/Dashboard/settings" },
-  // { icon: FieldTimeOutlined, title: "Coming Soon", link: "/Dashboard/coming-soon" },
+ 
 ].map((item) => {
   const key = item.link;
   return {
@@ -108,7 +109,7 @@ function DashboardLayout({
     token: { colorBgContainer },
   } = theme.useToken();
 
-  const endpoints = ["create-events", "events-created", "coming-soon", "settings"];
+  const endpoints = ["users", "support", "audit-trail", "settings"];
 
   const index = pathname.split("/")[2];
 
@@ -125,9 +126,9 @@ function DashboardLayout({
 
   const pathCheck =
     pathname.split("/").includes("settings") ||
-    pathname.split("/").includes("events-created") ||
-    pathname.split("/").includes("coming-soon") ||
-    pathname.split("/").includes("create-events");
+    pathname.split("/").includes("users") ||
+    pathname.split("/").includes("audit-trail") ||
+    pathname.split("/").includes("support");
 
   const toggleSidebar = () => {
     console.log(collapsed);

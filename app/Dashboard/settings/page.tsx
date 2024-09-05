@@ -3,12 +3,10 @@
 import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout";
 import Tab from "@/app/ui/molecules/Tab";
 import { useCallback, useState } from "react";
-import Billing from "@/app/ui/organisms/Billing";
-import Profile from "@/app/ui/organisms/Profile";
-import OrderNotifications from "@/app/ui/organisms/OrderNotification";
+import Admin from "@/app/ui/organisms/AdminManagement";
 import PaymentSetting from "@/app/ui/organisms/PaymentSetting";
 
-const tabs = ["Profile", "Billing", "Order Notifications", "Payment Settings"];
+const tabs = ["Admin Management", "Revenue Generated"];
 
 function Settings() {
   const [currentTab, setCurrentTab] = useState(tabs[0]);
@@ -34,13 +32,9 @@ function Settings() {
       }
       isLoggedIn
     >
-      {currentTab === "Profile" ? (
-        <Profile />
-      ) : currentTab === "Billing" ? (
-        <Billing />
-      ) : currentTab === "Order Notifications" ? (
-        <OrderNotifications />
-      ) : currentTab === "Payment Settings" ? (
+      {currentTab === "Admin Management" ? (
+        <Admin />
+      ) : currentTab === "Revenue Generated" ? (
         <PaymentSetting />
       ) : null}
     </DashboardLayout>

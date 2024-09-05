@@ -18,13 +18,7 @@ const InfoCard: React.FC<PropsI> = ({ title, about, status, image, url, titleCla
       href={url}
       className="block relative overflow-hidden h-[240px] rounded-[50px]"
     >
-      <Image
-        src={image}
-        alt=""
-        width={224}
-        height={240}
-        className="rounded-[50px] h-full w-full"
-      />
+      
       <div className="absolute inset-0 bg-image-card text-white">
         <div className={`absolute top-0 right-0 py-3 px-4 bg-OWANBE_PRY rounded-bl-[1.25rem] ${statusClass}`}>
           {status}

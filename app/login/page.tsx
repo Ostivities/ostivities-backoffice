@@ -12,13 +12,7 @@ function Login() {
         <Small
           content={
             <span className="text-sm font-BricolageGrotesqueRegular">
-              New user?{" "}
-              <Link
-                href={"/signup"}
-                className="text-OWANBE_PRY underline hover:text-OWANBE_PRY hover:underline"
-              >
-                Sign up
-              </Link>
+              Administrator
             </span>
           }
           className="float-right place-self-end"
