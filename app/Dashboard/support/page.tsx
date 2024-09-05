@@ -2,7 +2,7 @@
 import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout";
 import React from "react";
 import { useRouter } from "next/navigation";
-import soon from '@/public/disputes.svg';
+import soon from '@/public/Disputes.svg';
 import Image from 'next/image';
 
 function Support(): JSX.Element {
