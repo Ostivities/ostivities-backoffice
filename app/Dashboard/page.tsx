@@ -83,11 +83,12 @@ function Dashboard(): JSX.Element {
 
   const title = (
     <div className="flex justify-between items-center w-full relative pb-2">
-      <h1 style={{ fontSize: '24px' }}>Dashboard</h1>
+      <h1 style={{ fontSize: '24px', fontFamily: 'Bricolage Grotesque' }}>Dashboard</h1>
       {/* Filters on the same line as the title */}
       <div className="flex space-x-4">
         <select
           className="p-2 border rounded text-sm"
+          style={{ fontFamily: 'Bricolage Grotesque' }}
           value={selectedMonth}
           onChange={(e) => handleFilterChange("Month", e.target.value)}
         >
@@ -97,6 +98,7 @@ function Dashboard(): JSX.Element {
         </select>
         <select
           className="p-2 border rounded text-sm"
+          style={{ fontFamily: 'Bricolage Grotesque' }}
           value={selectedYear}
           onChange={(e) => handleFilterChange("Year", e.target.value)}
         >
@@ -105,6 +107,7 @@ function Dashboard(): JSX.Element {
         </select>
         <select
           className="p-2 border rounded text-sm"
+          style={{ fontFamily: 'Bricolage Grotesque' }}
           value={selectedUserCategory}
           onChange={(e) => handleFilterChange("UserCategory", e.target.value)}
         >
@@ -117,6 +120,7 @@ function Dashboard(): JSX.Element {
         </select>
         <select
           className="p-2 border rounded text-sm"
+          style={{ fontFamily: 'Bricolage Grotesque' }}
           value={selectedEventCategory}
           onChange={(e) => handleFilterChange("EventCategory", e.target.value)}
         >
@@ -136,36 +140,32 @@ function Dashboard(): JSX.Element {
       <div className="w-full mx-auto py-6 space-y-5 bg-transparent">
         <div className="grid grid-cols-2 gap-6">
           {/* User Account Status Chart */}
-          <div className="bg-white p-4 rounded-lg shadow-md h-[300px]">
-            <h1 style={{ fontSize: '16px' }}>Users Account Status</h1>
-            {/* Add a check to ensure series is not undefined */}
+          <div className="bg-white p-4 rounded-lg h-[300px]" style={{ boxShadow: "0px 8px 24px 0px #00000014" }}>
+            <h1 style={{ fontSize: '16px', fontFamily: 'Bricolage Grotesque' }}>Users Account Status</h1>
             {userAccountSeries && (
               <Chart options={userAccountOptions} series={userAccountSeries} type="pie" height={250} />
             )}
           </div>
 
-          {/* Event Creation by Category Chart */}
-          <div className="bg-white p-4 rounded-lg shadow-md h-[300px]">
-            <h1 style={{ fontSize: '16px' }}>Creation of Event by Category</h1>
-            {/* Add a check to ensure series is not undefined */}
+          {/* Event Creation by Category Doughnut Chart */}
+          <div className="bg-white p-4 rounded-lg h-[300px]" style={{ boxShadow: "0px 8px 24px 0px #00000014" }}>
+            <h1 style={{ fontSize: '16px', fontFamily: 'Bricolage Grotesque' }}>Creation of Event by Category</h1>
             {eventCategorySeries && (
-              <Chart options={eventCategoryOptions} series={eventCategorySeries} type="pie" height={250} />
+              <Chart options={eventCategoryOptions} series={eventCategorySeries} type="donut" height={250} />
             )}
           </div>
 
           {/* Total Number of Events Created */}
-          <div className="bg-white p-4 rounded-lg shadow-md h-[300px]">
-            <h1 style={{ fontSize: '16px' }}>Total Number of Events Created</h1>
-            {/* Add a check to ensure series is not undefined */}
+          <div className="bg-white p-4 rounded-lg h-[300px]" style={{ boxShadow: "0px 8px 24px 0px #00000014" }}>
+            <h1 style={{ fontSize: '16px', fontFamily: 'Bricolage Grotesque' }}>Total Number of Events Created</h1>
             {totalEventSeries && (
               <Chart options={totalEventOptions} series={totalEventSeries} type="bar" height={250} />
             )}
           </div>
 
           {/* Distribution of Users by Event Categories */}
-          <div className="bg-white p-4 rounded-lg shadow-md h-[300px]">
-            <h1 style={{ fontSize: '16px' }}>Distribution of Users by Event Categories</h1>
-            {/* Add a check to ensure series is not undefined */}
+          <div className="bg-white p-4 rounded-lg h-[300px]" style={{ boxShadow: "0px 8px 24px 0px #00000014" }}>
+            <h1 style={{ fontSize: '16px', fontFamily: 'Bricolage Grotesque' }}>Distribution of Users by Event Categories</h1>
             {userDistributionSeries && (
               <Chart options={userDistributionOptions} series={userDistributionSeries} type="bar" height={250} />
             )}
