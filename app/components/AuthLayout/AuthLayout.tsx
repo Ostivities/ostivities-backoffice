@@ -13,10 +13,13 @@ function AuthLayout({ children }: IAuthLayout): JSX.Element {
         <div className="md:container md:mx-auto px-5 pt-8 pb-12 lg:pb-0 md:pt-6 lg:pt-0 relative">
           <div className="flex flex-row items-start auth-background mt-3">
             <div className="hidden w-5/12 md:flex flex-col space-y-3 pt-80">
-              <h5 className="leading-3 font-BricolageGrotesqueRegular welcome-heading">
+              {/* <h5 className="leading-3 font-BricolageGrotesqueRegular welcome-heading">
                 Welcome to
-              </h5>
+              </h5> */}
               <Heading3 className="custom-heading font-bold" content="Ostivities" />
+              <h5 className="leading-3 font-BricolageGrotesqueRegular welcome-heading">
+                Back Office
+              </h5>
             </div>
             <div className="w-full md:w-7/12 mt-20"> {/* Adjust margin-top here */}
               <Card

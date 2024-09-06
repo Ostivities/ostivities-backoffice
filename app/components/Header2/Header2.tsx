@@ -58,7 +58,7 @@ function Header2(): JSX.Element {
             </Link>
           </div>
           {/* Conditionally render NAV_LINKS */}
-          {showNavLinks && (
+          {/* {showNavLinks && (
             <div className="flex flex-row items-center space-x-8">
               {NAV_LINKS.map((link: INavLinks) => (
                 <Link
@@ -70,9 +70,9 @@ function Header2(): JSX.Element {
                 </Link>
               ))}
             </div>
-          )}
+          )} */}
           {/* Conditional Buttons Rendering */}
-          {!pathCheck && (
+          {/* {!pathCheck && (
             <div className="flex flex-row items-end justify-end space-x-3">
               {isNotLoggedIn ? (
                 <>
@@ -88,7 +88,7 @@ function Header2(): JSX.Element {
                 />
               )}
             </div>
-          )}
+          )} */}
         </nav>
 
         {/* SM AND MD SCREENS */}
