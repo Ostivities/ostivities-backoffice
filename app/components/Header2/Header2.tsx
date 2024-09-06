@@ -22,6 +22,7 @@ function Header2(): JSX.Element {
     pathname.includes('forgot-password') ||
     pathname === '/login' ||
     pathname === '/signup' ||
+    pathname === '/user-invite' ||
     pathname === '/verify-account';
 
   // Check if NAV_LINKS should be displayed

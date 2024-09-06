@@ -17,8 +17,11 @@ import "jspdf-autotable";
 import React, { useState } from "react";
 import * as XLSX from "xlsx";
 import { useRouter } from "next/navigation";
+import StaffDetail from "@/app/components/OstivitiesModal/StaffDetail";
 
 const { Search } = Input;
+
+// Imports remain the same
 
 const AdminManagement: React.FC = () => {
   const router = useRouter();
@@ -27,28 +30,37 @@ const AdminManagement: React.FC = () => {
   const [pageSize, setPageSize] = useState(10);
   const [selectedRowKeys, setSelectedRowKeys] = useState<React.Key[]>([]);
   const [isShown, setIsShown] = useState(false);
-  const [actionType, setActionType] = useState<"delete" | "warning">();
+  const [actionType, setActionType] = useState<"delete" | "warning" | "detail">();
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [showNewVendorDetails, setShowNewVendorDetails] = useState<boolean>(false);
+  const [modalData, setModalData] = useState<any>({});
+
+
+  const handleAction = (record: AdminDataType) => {
+    setIsModalOpen(true);
+    setModalData(record);
+  };
 
   // Define possible designations
   const designations: AdminDataType["designation"][] = [
-    "CEO", 
-    "CTO", 
-    "Product Manager", 
-    "HR", 
-    "Admin", 
-    "Finance Manager", 
-    "Customer Care"
+    "CEO",
+    "CTO",
+    "Product Manager",
+    "HR Manager",
+    "Admin",
+    "Finance Manager",
+    "Customer Care",
   ];
 
   // Generate unique data ensuring only one CEO and one CTO
   const generateUniqueData = () => {
     const data: AdminDataType[] = [];
     const usedDesignations: Set<string> = new Set();
-    
+
     for (let index = 0; index < 50; index++) {
-      let designation: AdminDataType["designation"] = designations[
-        Math.floor(Math.random() * designations.length)
-      ];
+      let designation: AdminDataType["designation"] =
+        designations[Math.floor(Math.random() * designations.length)];
 
       // Ensure only one CEO and one CTO
       if (designation === "CEO" && usedDesignations.has("CEO")) {
@@ -67,7 +79,7 @@ const AdminManagement: React.FC = () => {
         id: generateRandomString(10),
       });
     }
-    
+
     return data;
   };
 
@@ -126,9 +138,10 @@ const AdminManagement: React.FC = () => {
             minWidth: "70px",
             padding: "4px",
           }}
-          onClick={() =>
-            router.push(`#`)
-          }
+          onClick={() => {
+            setIsModalOpen(true);
+            setActionType("detail");
+          }}
         >
           View
         </Button>
@@ -178,6 +191,13 @@ const AdminManagement: React.FC = () => {
 
   return (
     <React.Fragment>
+       {isModalOpen && actionType === "detail" && (
+        <StaffDetail
+          open={isModalOpen}
+          onCancel={() => setIsModalOpen(false)}
+          data={modalData}
+        />
+      )}
       <DeleteTicket
         open={isShown}
         onCancel={() => setIsShown(false)}
@@ -191,9 +211,22 @@ const AdminManagement: React.FC = () => {
             onChange={onSearchChange}
             style={{ width: 300 }}
           />
+           {/* <Button
+              type="primary"
+              size="large"
+              className="font-BricolageGrotesqueSemiBold sign-up cursor-pointer font-bold w-40 rounded-2xl float-end"
+              style={{
+                borderRadius: "20px",
+                fontFamily: "BricolageGrotesqueMedium",
+                margin: '10px'
+              }}
+              onClick={() => setShowNewVendorDetails(true)}
+            >
+              Add New User
+            </Button> */}
           {hasSelected && (
             <div>
-              <Button
+              {/* <Button
                 type="primary"
                 className="font-BricolageGrotesqueSemiBold continue font-bold custom-button"
                 danger
@@ -204,7 +237,7 @@ const AdminManagement: React.FC = () => {
                 }}
               >
                 <DeleteOutlined />
-              </Button>
+              </Button> */}
               <Button
                 type="default"
                 className="font-BricolageGrotesqueSemiBold continue cursor-pointer font-bold"
@@ -249,3 +282,4 @@ const AdminManagement: React.FC = () => {
 };
 
 export default AdminManagement;
+

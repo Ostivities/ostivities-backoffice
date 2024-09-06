@@ -121,32 +121,45 @@ export interface DataType {
 }
 
 export interface AuditTrailDataType {
-  key: string; // Unique key for each row
-  clientName: string; // Name of the client
+  key: React.Key; // Unique identifier for each row
+  user: string; // Name of the user who performed the action
   userRole: string; // Role of the user (e.g., Admin, User, Viewer)
-  actionDescription: string; // Description of the action taken
-  actionDoneBy: string; // The user who executed the action
-  actionDate: string; // Date of the action
-  id: string; // Unique identifier for user actions
+  clientName: string; // Name of the client associated with the action
+  actionDescription: string; // Description of the action performed
+  dateTime: string; // Date and time when the action was performed
+  id: string; // Unique identifier for the action record
 }
 
 
 export interface UsersDataType {
-  key: string;
-  users: string;
-  registrationDate: string;
-  lastLoginDate: string;
-  status: "Active" | "Closed" | "Pending";
-  id: string;
+  key: string; // Unique key for each record
+  users: string; // User's name or identifier
+  accountType: "Personal" | "Organization"; // Account type can be either Personal or Organization
+  registrationDate: string; // Date of registration in string format
+  lastLoginDate: string; // Date of last login in string format
+  status: "Active" | "Inactive" | "Pending"; // Status of the user: Active, Inactive, or Pending
+  id: string; // Unique identifier for actions, such as viewing details
 }
 
 export interface AdminDataType {
   key: string;
   staffName: string;
-  designation: "CEO" | "CTO" | "Product Manager" | "HR" | "Admin" | "Finance Manager" | "Customer Care";
+  designation: "CEO" | "CTO" | "Product Manager" | "HR Manager" | "Admin" | "Finance Manager" | "Customer Care";
   dateAssigned: string;
   id: string;
 }
+
+export interface RevenueDataType {
+  key: string;
+  month: string;
+  year: number;
+  expenses: string; // If 'expenses' should be a number, adjust the type and format accordingly
+  totalRevenue: string; // If 'totalRevenue' should be a number, adjust the type and format accordingly
+  netProfit: string; // If 'netProfit' should be a number, adjust the type and format accordingly
+  revenueGrowth: string;
+  cashFlowStatus: "Positive" | "Negative" | "Neutral";
+}
+
 
 export interface SalesDataType {
   eventType: any;

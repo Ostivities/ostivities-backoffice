@@ -10,7 +10,7 @@ const CoordinatorsDetail = ({ open, onCancel, onOk, data }: IModal) => {
       title={
         <Space direction="vertical" size={"large"}>
           <Paragraph content={data?.eventType} className="pb-5 text-2xl" />
-        </Space>
+        </Space> 
       }
       open={open}
       onOk={onOk}

@@ -10,9 +10,15 @@ function Login() {
       <div className="mt-2"> {/* Add margin-top to create space from AuthLayout */}
       <div className="flex flex-col space-y-16">
         <Small
-          content={
+           content={
             <span className="text-sm font-BricolageGrotesqueRegular">
-              Administrator
+            
+              <Link
+                href={"/user-invite"}
+                className="text-OWANBE_PRY underline cursor-pointer hover:text-OWANBE_PRY hover:underline"
+              >
+                Invite User
+              </Link>
             </span>
           }
           className="float-right place-self-end"

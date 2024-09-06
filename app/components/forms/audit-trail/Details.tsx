@@ -31,11 +31,11 @@ const AudittrailTable: React.FC = () => {
   // Updated data with new columns
   const data: AuditTrailDataType[] = Array.from({ length: 50 }, (_, index) => ({
     key: `${index + 1}`,
-    clientName: `Client ${index + 1}`,
+    user: `User ${Math.floor(Math.random() * 10 + 1)}`,
     userRole: ["Admin", "User", "Viewer"][Math.floor(Math.random() * 3)],
+    clientName: `Client ${index + 1}`,
     actionDescription: ["Created a record", "Updated a profile", "Deleted a file"][Math.floor(Math.random() * 3)],
-    actionDoneBy: `User ${Math.floor(Math.random() * 10 + 1)}`,
-    actionDate: `2024-09-${(index + 1).toString().padStart(2, "0")}`,
+    dateTime: `2024-09-${(index + 1).toString().padStart(2, "0")} 12:00 PM`,
     id: generateRandomString(10),
   }));
 
@@ -43,7 +43,6 @@ const AudittrailTable: React.FC = () => {
   const uniqueUserRoles = [...new Set(data.map(item => item.userRole))];
   const uniqueClientNames = [...new Set(data.map(item => item.clientName))];
   const uniqueActionDescriptions = [...new Set(data.map(item => item.actionDescription))];
-  const uniqueActionDoneBys = [...new Set(data.map(item => item.actionDoneBy))];
 
   // Updated columns with filters
   const columns: ColumnsType<AuditTrailDataType> = [
@@ -54,10 +53,7 @@ const AudittrailTable: React.FC = () => {
           className="font-semibold text-OWANBE_TABLE_TITLE"
         />
       ),
-      dataIndex: "clientName",
-      sorter: (a, b) => a.clientName.localeCompare(b.clientName),
-      filters: uniqueClientNames.map(name => ({ text: name, value: name })),
-      onFilter: (value, record) => record.clientName.includes(value as string),
+      dataIndex: "user",
     },
     {
       title: (
@@ -73,6 +69,17 @@ const AudittrailTable: React.FC = () => {
     {
       title: (
         <Label
+          content="Client Name"
+          className="font-semibold text-OWANBE_TABLE_TITLE"
+        />
+      ),
+      dataIndex: "clientName",
+      filters: uniqueClientNames.map(name => ({ text: name, value: name })),
+      onFilter: (value, record) => record.clientName.includes(value as string),
+    },
+    {
+      title: (
+        <Label
           content="Action Description"
           className="font-semibold text-OWANBE_TABLE_TITLE"
         />
@@ -84,24 +91,13 @@ const AudittrailTable: React.FC = () => {
     {
       title: (
         <Label
-          content="Action Done By"
+          content="Date & Time"
           className="font-semibold text-OWANBE_TABLE_TITLE"
         />
       ),
-      dataIndex: "actionDoneBy",
-      filters: uniqueActionDoneBys.map(doneBy => ({ text: doneBy, value: doneBy })),
-      onFilter: (value, record) => record.actionDoneBy.includes(value as string),
-    },
-    {
-      title: (
-        <Label
-          content="Action Date"
-          className="font-semibold text-OWANBE_TABLE_TITLE"
-        />
-      ),
-      dataIndex: "actionDate",
+      dataIndex: "dateTime",
       sorter: (a, b) =>
-        new Date(a.actionDate).getTime() - new Date(b.actionDate).getTime(),
+        new Date(a.dateTime).getTime() - new Date(b.dateTime).getTime(),
     },
   ];
 

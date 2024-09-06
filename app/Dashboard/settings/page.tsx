@@ -4,7 +4,7 @@ import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout";
 import Tab from "@/app/ui/molecules/Tab";
 import { useCallback, useState } from "react";
 import Admin from "@/app/ui/organisms/AdminManagement";
-import PaymentSetting from "@/app/ui/organisms/PaymentSetting";
+import RevenueGenerated from "@/app/ui/organisms/RevenueGenerated";
 
 const tabs = ["Admin Management", "Revenue Generated"];
 
@@ -35,7 +35,7 @@ function Settings() {
       {currentTab === "Admin Management" ? (
         <Admin />
       ) : currentTab === "Revenue Generated" ? (
-        <PaymentSetting />
+        <RevenueGenerated />
       ) : null}
     </DashboardLayout>
   );
