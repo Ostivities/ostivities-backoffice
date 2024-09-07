@@ -2,7 +2,7 @@
 import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
-import { Card } from "antd"; // Assuming you use Ant Design
+import { Button, Card } from "antd"; // Assuming you use Ant Design
 
 // Load ApexCharts dynamically to avoid SSR issues
 const Chart = dynamic(() => import("react-apexcharts"), { ssr: false });
@@ -12,7 +12,7 @@ const eventColors = ['#007bff', '#6f42c1', '#e83e8c', '#17a2b8', '#ffc107'];
 
 interface CardMetricsProps {
   title: string;
-  value: string | number;
+  value: React.ReactNode;  // Allow any renderable React content
   cardStyle?: React.CSSProperties;
   titleStyle?: React.CSSProperties;
   valueStyle?: React.CSSProperties;
@@ -221,17 +221,42 @@ const Dashboard = (): JSX.Element => {
             containerStyle={containerStyle}
           />
           <CardMetrics
-            title="System Health"
-            value={`${systemHealthPercentage}%`}
-            cardStyle={{ ...cardStyle, color: systemHealthColor }}
-            titleStyle={titleStyle}
-            valueStyle={{ ...valueStyle, color: systemHealthColor }}
-            containerStyle={containerStyle}
-          />
+  title="System Status"
+  value={
+    <div className="flex justify-center space-x-2">
+      <Button
+        type="primary"
+        style={{
+          backgroundColor: '#e20000',
+          borderRadius: '25px',
+        }}
+        onClick={() => window.open("https://ostivities.statuspage.io/", "_blank")}
+      >
+        Check Status
+      </Button>
+      <Button
+        type="default"
+        style={{
+          borderColor: '#000000',
+          borderRadius: '25px',
+          color: '#000000',
+        }}
+        onClick={() => window.open("https://manage.statuspage.io/pages/xx364th54tvk/incidents", "_blank")}
+      >
+        Update Status
+      </Button>
+    </div>
+  }
+  cardStyle={cardStyle}
+  titleStyle={titleStyle}
+  valueStyle={valueStyle}
+  containerStyle={containerStyle}
+/>
+
         </div>
 
-        {/* Charts Section */}
-        <div className="grid grid-cols-2 gap-6">
+         {/* Charts Section */}
+         <div className="grid grid-cols-2 gap-6">
           {/* User Account Status Chart */}
           <div className="bg-white p-4 rounded-lg shadow-md h-[300px]" style={{ borderRadius: '20px', boxShadow: "0px 8px 24px 0px #00000014" }}>
             <h1 style={{ fontSize: '16px', fontFamily: 'Bricolage Grotesque' }}>Users Account Status</h1>
