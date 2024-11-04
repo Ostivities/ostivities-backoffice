@@ -22,7 +22,7 @@ function EventsCreated(): JSX.Element {
         className="cursor-pointer"
       />
       <div className="flex-center justify-between w-full">
-        <h1 className="text-2xl">Events Created</h1>
+        <h1 className="text-2xl">Users Created Event</h1>
       </div>
     </div> // Closing div for the header
   );

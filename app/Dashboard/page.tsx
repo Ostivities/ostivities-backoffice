@@ -1,5 +1,5 @@
 "use client";
-import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout";
+import DashboardLayout from "@/app/components/DashboardLayout/DashboardLayout2";
 import React, { useState } from "react";
 import dynamic from "next/dynamic";
 import { Button, Card } from "antd"; // Assuming you use Ant Design
@@ -192,8 +192,9 @@ const Dashboard = (): JSX.Element => {
   );
 
   return (
-    <DashboardLayout title={title} isLoggedIn>
-      <div className="w-full mx-auto py-6 space-y-5 bg-transparent">
+    <DashboardLayout 
+    title={title} isLoggedIn>
+      <div className="">
         {/* Cards Section */}
         <div className="grid grid-cols-4 gap-x-6 mb-6">
           <CardMetrics
